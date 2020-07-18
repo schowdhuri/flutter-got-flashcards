@@ -72,7 +72,7 @@ class OptionButton extends StatelessWidget {
       child: FlatButton(
         color: Colors.black45,
         onPressed: () {
-          onChange(0);
+          onChange(option);
         },
         child: Container(
           alignment: Alignment.center,

@@ -1,5 +1,6 @@
 import 'package:flashcards/helpers/deviceinfo_provider.dart';
-import 'package:flashcards/screens/home/home_screen.dart';
+import 'package:flashcards/screens/cards/cards_screen.dart';
+import 'package:flashcards/screens/start/start_screen.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -7,19 +8,33 @@ void main() {
 }
 
 class FlashCardsApp extends StatelessWidget {
-  // This widget is the root of your application.
+  Route<dynamic> _onGenerateRoute(RouteSettings settings) {
+    if (settings.name == "/cards") {
+      return MaterialPageRoute(builder: (BuildContext context) {
+        return DeviceInfoProvider(
+          child: CardsScreen(),
+        );
+      });
+    }
+
+    return MaterialPageRoute(builder: (BuildContext context) {
+      return DeviceInfoProvider(
+        child: StartScreen(),
+      );
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Flash Cards',
       theme: ThemeData(
         scaffoldBackgroundColor: Colors.blueGrey,
-        primarySwatch: Colors.blue,
+        primarySwatch: Colors.blueGrey,
         visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
-      home: DeviceInfoProvider(
-        child: HomeScreen(),
-      ),
+      onGenerateRoute: _onGenerateRoute,
+      initialRoute: "/",
     );
   }
 }

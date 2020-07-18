@@ -42,14 +42,18 @@ class FlashCard extends HookWidget {
               ),
             ),
             back: FlashCardContent(
-              child: Center(
-                child: Text(
-                  question.options
-                      .where((Option opt) => opt.isCorrect)
-                      .toList()[0]
-                      .text,
-                  style: TextStyle(
-                    fontSize: 28,
+              child: Padding(
+                padding: const EdgeInsets.all(16),
+                child: Center(
+                  child: Text(
+                    question.options
+                        .where((Option opt) => opt.isCorrect)
+                        .toList()[0]
+                        .text,
+                    style: TextStyle(
+                      fontSize: 28,
+                    ),
+                    textAlign: TextAlign.center,
                   ),
                 ),
               ),
